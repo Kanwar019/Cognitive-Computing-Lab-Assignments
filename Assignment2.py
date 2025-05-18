@@ -59,10 +59,11 @@ else:
     print(f"4. {X} not found in A.")
 
 # 5. Dictionary Key Rename
-info = {
-    'name': 'Thapar',
-    'city': 'Patiala',
-    'year': 2025
+sampledict = {
+    'name': 'Kelly',
+    'age': '25',
+    'salary': 8000,
+    'city': 'New york'
 }
-info['location'] = info.pop('city')
-print("5. Dictionary after renaming key:", info)
+sampledict['location'] = sampledict.pop('city')
+print("5. Dictionary after renaming key:", sampledict)
