@@ -39,24 +39,27 @@ print("\nQuestion 3")
 np.random.seed(102317223)
 data = np.random.randn(50)
 
-fig, axs = plt.subplots(2, 2, figsize=(10, 8))
+plt.figure(figsize=(10, 6))
 
-axs[0, 0].plot(np.cumsum(data))
-axs[0, 0].set_title("Cumulative Sum")
-axs[0, 0].set_xlabel("Index")
-axs[0, 0].set_ylabel("Value")
-axs[0, 0].grid(True)
+# First plot: Cumulative Sum
+plt.subplot(2, 2, 1)
+plt.plot(np.cumsum(data))
+plt.title("Cumulative Sum")
+plt.xlabel("Index")
+plt.ylabel("Value")
+plt.grid(True)
 
-axs[0, 1].scatter(range(50), data + np.random.randn(50) * 0.2, color='orange')
-axs[0, 1].set_title("Scatter Plot with Noise")
-axs[0, 1].set_xlabel("Index")
-axs[0, 1].set_ylabel("Value")
-axs[0, 1].grid(True)
+# Second plot: Scatter with Noise
+plt.subplot(2, 2, 2)
+plt.scatter(range(50), data + np.random.randn(50) * 0.2, color='orange')
+plt.title("Scatter Plot with Noise")
+plt.xlabel("Index")
+plt.ylabel("Value")
+plt.grid(True)
 
-fig.delaxes(axs[1, 0])
-fig.delaxes(axs[1, 1])
 plt.tight_layout()
 plt.show()
+
 
 print("\nQuestion 4")
 df = pd.read_csv("company_sales_data.csv")
