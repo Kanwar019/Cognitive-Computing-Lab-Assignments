@@ -1,47 +1,25 @@
 from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
-from sklearn.preprocessing import StandardScaler
-from sklearn.metrics import classification_report, confusion_matrix, accuracy_score
-import matplotlib.pyplot as plt
-import seaborn as sns
+from sklearn.metrics import accuracy_score, classification_report
 
-print("Question 1: Logistic Regression on the Iris Dataset")
-
-# Load dataset
+# 1. Load and Prepare the Data
 iris = load_iris()
 X = iris.data
 y = iris.target
 
-# Split dataset
+# Split into training and testing sets
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=102317223)
 
-# Standardize features
-scaler = StandardScaler()
-X_train_scaled = scaler.fit_transform(X_train)
-X_test_scaled = scaler.transform(X_test)
+# 2. Create and Train the Model
+logistic_model = LogisticRegression(solver='liblinear', multi_class='ovr')  # 'liblinear' for small datasets
+logistic_model.fit(X_train, y_train)
 
-# Logistic Regression model
-model = LogisticRegression(max_iter=200)
-model.fit(X_train_scaled, y_train)
+# 3. Make Predictions
+y_pred = logistic_model.predict(X_test)
 
-# Predictions
-y_pred = model.predict(X_test_scaled)
+# 4. Evaluate the Model
+accuracy = accuracy_score(y_test, y_pred)
+print(f"Accuracy: {accuracy}")
 
-# Evaluation
-print("\nConfusion Matrix:")
-print(confusion_matrix(y_test, y_pred))
-
-print("\nClassification Report:")
 print(classification_report(y_test, y_pred))
-
-print("\nAccuracy Score:", accuracy_score(y_test, y_pred))
-
-# Plotting confusion matrix
-plt.figure(figsize=(6, 4))
-sns.heatmap(confusion_matrix(y_test, y_pred), annot=True, cmap='Blues', fmt='g', 
-            xticklabels=iris.target_names, yticklabels=iris.target_names)
-plt.xlabel("Predicted")
-plt.ylabel("Actual")
-plt.title("Confusion Matrix")
-plt.show()
