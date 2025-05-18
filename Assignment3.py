@@ -3,10 +3,11 @@ import random
 
 # Question 1: Create the dataset
 data = {
-    'Name': ['Alice', 'Bob', 'Charlie', 'Diana', 'Edward', 'Fiona', 'George', 'Hannah', 'Ian', 'Jane'],
-    'Age': [25, 30, 35, 28, 40, 32, 38, 27, 45, 29],
-    'Department': ['HR', 'IT', 'IT', 'Marketing', 'Sales', 'HR', 'IT', 'Marketing', 'Sales', 'HR'],
-    'Salary': [50000, 60000, 65000, 55000, 70000, 52000, 62000, 53000, 72000, 51000]
+    'Tid': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    'Refund': ['Yes', 'No', 'No', 'Yes', 'No', 'No', 'Yes', 'No', 'No', 'No'],
+    'Marital Status': ['Single', 'Married', 'Single', 'Married', 'Divorced', 'Married', 'Divorced', 'Single', 'Married', 'Single'],
+    'Taxable Income': ['125K', '100K', '70K', '120K', '95K', '60K', '220K', '85K', '75K', '90K'],
+    'Cheat': ['No', 'No', 'No', 'No', 'Yes', 'No', 'No', 'Yes', 'No', 'Yes']
 }
 df = pd.DataFrame(data)
 
